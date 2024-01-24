@@ -13,7 +13,7 @@ const Header = () => {
       <nav className={headerStyle.mainNav}>
         <Link
           to="/"
-          className={`${headerStyle.homeLink} ${headerStyle.logoLink}`}
+          className={`${headerStyle.anchor} ${headerStyle.logoLink}`}
         >
           <img
             className={headerStyle.logo}
@@ -23,8 +23,12 @@ const Header = () => {
           <h1 className={headerStyle.srOnly}></h1>
         </Link>
         <div>
-          <Link to="/sign-in" className={headerStyle.item}>
-            <i className="fa fa-user-circle">Sign In</i>
+          <Link
+            to="/sign-in"
+            className={`${headerStyle.anchor} ${headerStyle.item}`}
+          >
+            <i className="fa fa-user-circle"></i>
+            &nbsp;Sign In
           </Link>
         </div>
       </nav>

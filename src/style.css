@@ -1,3 +1,4 @@
+/*
 html {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -12,6 +13,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
+*/
 
 .main {
   flex: 1;
@@ -20,19 +22,19 @@ body {
 .bg-dark {
   background-color: #12002b;
 }
-
+/*
 .sr-only {
   border: 0 !important;
-  clip: rect(1px, 1px, 1px, 1px) !important; /* 1 */
+  clip: rect(1px, 1px, 1px, 1px) !important; 
   -webkit-clip-path: inset(50%) !important;
-  clip-path: inset(50%) !important; /* 2 */
+  clip-path: inset(50%) !important; 
   height: 1px !important;
   margin: -1px !important;
   overflow: hidden !important;
   padding: 0 !important;
   position: absolute !important;
   width: 1px !important;
-  white-space: nowrap !important; /* 3 */
+  white-space: nowrap !important; 
 }
 
 .main-nav {
@@ -45,10 +47,6 @@ body {
 .main-nav a {
   font-weight: bold;
   color: #2c3e50;
-}
-
-.main-nav a.router-link-exact-active {
-  color: #42b983;
 }
 
 .main-nav-item {
@@ -69,7 +67,13 @@ body {
   max-width: 100%;
   width: 200px;
 }
+*/
 
+.main-nav a.router-link-exact-active {
+  color: #42b983;
+}
+
+/*
 .hero {
   background-image: url("../img/bank-tree.jpeg");
   background-position: 0 -50px;
@@ -153,6 +157,7 @@ body {
   margin-bottom: 0.5rem;
 }
 
+*/
 .sign-in-button {
   display: block;
   width: 100%;

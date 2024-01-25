@@ -219,7 +219,6 @@ body {
   margin: 0;
   padding: 0;
 }
-*/
 
 .account {
   display: flex;
@@ -283,6 +282,7 @@ body {
   color: #fff;
 }
 
+*/
 @media (min-width: 720px) {
   .account {
     flex-direction: row;

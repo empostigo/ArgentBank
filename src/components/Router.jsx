@@ -14,6 +14,7 @@ import Footer from "./Footer/Footer"
 
 // Pages
 import Home from "../Pages/Home/Home"
+import SignIn from "../Pages/SignIn/SignIn"
 
 const Layout = () => {
   return (
@@ -30,6 +31,7 @@ const router = createBrowserRouter(
     <>
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
+        <Route path="/sign-in" element={<SignIn />} />
       </Route>
     </>
   )

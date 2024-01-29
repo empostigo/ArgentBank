@@ -5,7 +5,7 @@ import ReactDOM from "react-dom/client"
 import ArgentBankRouter from "./components/Router"
 
 // Style
-import "./main.module.scss"
+import "./index.module.scss"
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <ArgentBankRouter />

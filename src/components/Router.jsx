@@ -20,7 +20,6 @@ import User from "../Pages/User/User"
 const Layout = () => {
   return (
     <>
-      <Header />
       <Outlet />
       <Footer />
     </>

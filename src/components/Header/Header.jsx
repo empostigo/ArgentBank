@@ -15,7 +15,10 @@ const UserLoggedIn = ({ username }) => {
   const dispatch = useDispatch()
   return (
     <>
-      <Link to="/user" className={`${headerStyle.anchor} ${headerStyle.item}`}>
+      <Link
+        to="/profile"
+        className={`${headerStyle.anchor} ${headerStyle.item}`}
+      >
         <i className="fa fa-user-circle"></i>
         &nbsp;{username}
       </Link>
@@ -33,7 +36,7 @@ const UserLoggedIn = ({ username }) => {
 
 const UserLoggedOut = () => {
   return (
-    <Link to="/sign-in" className={`${headerStyle.anchor} ${headerStyle.item}`}>
+    <Link to="/login" className={`${headerStyle.anchor} ${headerStyle.item}`}>
       <i className="fa fa-user-circle"></i>
       &nbsp;Sign In
     </Link>

@@ -1,5 +1,5 @@
 // React
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 
 // React Hook Form
 import { useForm } from "react-hook-form"
@@ -29,10 +29,10 @@ const SignIn = () => {
   const navigate = useNavigate()
   useEffect(() => {
     if (success) {
-      localStorage.setItem("token", JSON.stringify(token))
-      navigate("/user")
-    }
-  }, [navigate, success])
+      localStorage.setItem("token", JSON.stringify(token.token))
+      navigate("/profile")
+    } else error ? console.log(error) : null
+  }, [navigate, success, error, token])
 
   return (
     <>

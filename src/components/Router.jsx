@@ -9,7 +9,6 @@ import {
 } from "react-router-dom"
 
 // Components
-import Header from "./Header/Header"
 import Footer from "./Footer/Footer"
 
 // Pages
@@ -31,8 +30,8 @@ const router = createBrowserRouter(
     <>
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
-        <Route path="/sign-in" element={<SignIn />} />
-        <Route path="/user" element={<User />} />
+        <Route path="/login" element={<SignIn />} />
+        <Route path="/profile" element={<User />} />
       </Route>
     </>
   )

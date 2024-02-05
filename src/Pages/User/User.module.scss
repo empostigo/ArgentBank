@@ -11,12 +11,55 @@
     margin-bottom: 2rem;
   }
 
-  .editButton {
+  .form {
+    display: none;
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .editWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .inputWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+    @media (min-width: 720px) {
+      flex-direction: row;
+    }
+
+    > input {
+      padding: 5px;
+      font-size: 1.2rem;
+    }
+  }
+
+  .buttonWrapper {
+    display: flex;
+    justify-content: center;
+    column-gap: 1rem;
+  }
+
+  .editButton,
+  .saveButton,
+  .cancelButton {
     border-color: #00bc77;
     background-color: #00bc77;
     color: #fff;
     font-weight: bold;
     padding: 10px;
+  }
+
+  .saveButton,
+  .cancelButton {
+    width: 93px;
   }
 
   .account {

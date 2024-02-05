@@ -1,25 +1,42 @@
 // Redux
 import { useDispatch, useSelector } from "react-redux"
 import { userInfosThunk } from "../../features/profile/profileSlice"
+import { userInfosUpdateThunk } from "../../features/updateUserProfile/updateUserProfileSlice"
+
+// React Hook Form
+import { useForm } from "react-hook-form"
 
 // Components
 import Header from "../../components/Header/Header"
 
 // Style
 import userStyle from "./User.module.scss"
-import { useEffect } from "react"
+import { useEffect, useRef } from "react"
 
 const User = () => {
   const { userInfos } = useSelector(state => state.profile)
   const dispatch = useDispatch()
 
+  const { register, handleSubmit } = useForm()
+  const submitForm = data => {
+    dispatch(userInfosUpdateThunk(data))
+  }
+
+  const editButtonRef = useRef("initial")
+  const editFormRef = useRef("hidden")
+
   useEffect(() => {
     dispatch(userInfosThunk())
   })
 
+  const editUserInfos = () => {
+    editButtonRef.current.style.display = "none"
+    editFormRef.current.style.display = "initial"
+  }
+
   return (
     <>
-      <Header />
+      <Header firstName={userInfos.firstName} />
       <main className={`${userStyle.main} ${userStyle.bgDark}`}>
         <header className={userStyle.header}>
           <h1>
@@ -27,7 +44,41 @@ const User = () => {
             <br />
             {`${userInfos.firstName} ${userInfos.lastName}!`}
           </h1>
-          <button className={userStyle.editButton}>Edit Name</button>
+          <button
+            ref={editButtonRef}
+            className={userStyle.editButton}
+            onClick={editUserInfos}
+          >
+            Edit Name
+          </button>
+          <form
+            ref={editFormRef}
+            className={userStyle.form}
+            onSubmit={handleSubmit(submitForm)}
+          >
+            <div className={userStyle.editWrapper}>
+              <div className={userStyle.inputWrapper}>
+                <input
+                  type="text"
+                  className={userStyle.firstName}
+                  placeholder={userInfos.firstName}
+                  {...register("firstName")}
+                />
+                <input
+                  type="text"
+                  className={userStyle.lastName}
+                  placeholder={userInfos.lastName}
+                  {...register("lastName")}
+                />
+              </div>
+              <div className={userStyle.buttonWrapper}>
+                <button className={userStyle.saveButton} type="submit">
+                  Save
+                </button>
+                <button className={userStyle.cancelButton}>Cancel</button>
+              </div>
+            </div>
+          </form>
         </header>
         <h2 className={userStyle.srOnly}>Accounts</h2>
         <section className={userStyle.account}>

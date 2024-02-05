@@ -11,7 +11,7 @@ import argentBankLogo from "../../assets/argentBankLogo.png"
 // Style
 import headerStyle from "./Header.module.scss"
 
-const UserLoggedIn = ({ username }) => {
+const UserLoggedIn = ({ firstName }) => {
   const dispatch = useDispatch()
   return (
     <>
@@ -20,7 +20,7 @@ const UserLoggedIn = ({ username }) => {
         className={`${headerStyle.anchor} ${headerStyle.item}`}
       >
         <i className="fa fa-user-circle"></i>
-        &nbsp;{username}
+        &nbsp;{firstName}
       </Link>
       <Link
         to="/"
@@ -43,7 +43,7 @@ const UserLoggedOut = () => {
   )
 }
 
-const Header = () => {
+const Header = ({ firstName = "" }) => {
   return (
     <header>
       <nav className={headerStyle.mainNav}>
@@ -60,7 +60,7 @@ const Header = () => {
         </Link>
         <div>
           {localStorage.getItem("token") ? (
-            <UserLoggedIn username="Thomas" />
+            <UserLoggedIn firstName={firstName} />
           ) : (
             <UserLoggedOut />
           )}

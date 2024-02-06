@@ -17,22 +17,27 @@ const User = () => {
   const { userInfos } = useSelector(state => state.profile)
   const dispatch = useDispatch()
 
-  const { register, handleSubmit } = useForm()
-  const submitForm = data => {
-    dispatch(userInfosUpdateThunk(data))
-  }
-
   const editButtonRef = useRef("initial")
   const editFormRef = useRef("hidden")
-
-  useEffect(() => {
-    dispatch(userInfosThunk())
-  })
-
   const editUserInfos = () => {
     editButtonRef.current.style.display = "none"
     editFormRef.current.style.display = "initial"
   }
+  const closeEditUserInfos = () => {
+    editButtonRef.current.style.display = "initial"
+    editFormRef.current.style.display = "none"
+  }
+
+  const { register, handleSubmit } = useForm()
+  const submitForm = data => {
+    dispatch(userInfosUpdateThunk(data))
+    dispatch(userInfosThunk())
+    closeEditUserInfos()
+  }
+
+  useEffect(() => {
+    dispatch(userInfosThunk())
+  })
 
   return (
     <>
@@ -72,10 +77,14 @@ const User = () => {
                 />
               </div>
               <div className={userStyle.buttonWrapper}>
-                <button className={userStyle.saveButton} type="submit">
-                  Save
+                <button className={userStyle.saveButton}>Save</button>
+                <button
+                  className={userStyle.cancelButton}
+                  type="reset"
+                  onClick={closeEditUserInfos}
+                >
+                  Cancel
                 </button>
-                <button className={userStyle.cancelButton}>Cancel</button>
               </div>
             </div>
           </form>

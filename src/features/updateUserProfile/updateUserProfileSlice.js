@@ -17,11 +17,11 @@ export const userInfosUpdateThunk = createAsyncThunk(
       url: USER_PROFILE,
       headers: {
         "Content-type": "application/json",
-        Authorization: attachedBearer,
-        data: {
-          firstName: data.firstName,
-          lastName: data.lastName
-        }
+        Authorization: attachedBearer
+      },
+      data: {
+        firstName: data.firstName,
+        lastName: data.lastName
       }
     })
     return response.data.body
@@ -38,15 +38,9 @@ const updateProfileSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: builder => {
-    builder.addCase(userInfosUpdateThunk.pending, state => {
-      return state
-    })
     builder.addCase(userInfosUpdateThunk.fulfilled, (state, action) => {
-      state.userInfos.id = action.payload.id
-      state.userInfos.email = action.payload.email
       state.userInfos.firstName = action.payload.firstName
       state.userInfos.lastName = action.payload.lastName
-      state.userInfos.createdAt = action.payload.createdAt
       state.userInfos.updatedAt = action.payload.updatedAt
     })
     builder.addCase(userInfosUpdateThunk.rejected, (state, action) => {

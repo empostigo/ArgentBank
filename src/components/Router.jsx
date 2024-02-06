@@ -15,6 +15,7 @@ import Footer from "./Footer/Footer"
 import Home from "../Pages/Home/Home"
 import SignIn from "../Pages/SignIn/SignIn"
 import User from "../Pages/User/User"
+import ProtectedRoute from "./ProtectedRoute/ProtectedRoute"
 
 const Layout = () => {
   return (
@@ -31,7 +32,14 @@ const router = createBrowserRouter(
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<SignIn />} />
-        <Route path="/profile" element={<User />} />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <User />
+            </ProtectedRoute>
+          }
+        />
       </Route>
     </>
   )

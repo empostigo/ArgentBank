@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom"
 
 // Redux
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { logOutUser } from "../../features/auth/authSlice"
 
 // assets
@@ -43,7 +43,10 @@ const UserLoggedOut = () => {
   )
 }
 
-const Header = ({ firstName = "" }) => {
+const Header = () => {
+  const { userAuthenticated } = useSelector(state => state.user)
+  const { userInfos } = useSelector(state => state.profile)
+
   return (
     <header>
       <nav className={headerStyle.mainNav}>
@@ -56,11 +59,11 @@ const Header = ({ firstName = "" }) => {
             src={argentBankLogo}
             alt="Argent Bank Logo"
           />
-          <h1 className={headerStyle.srOnly}></h1>
+          <h1 className={headerStyle.srOnly}>Argent Bank</h1>
         </Link>
         <div>
-          {localStorage.getItem("token") ? (
-            <UserLoggedIn firstName={firstName} />
+          {userAuthenticated ? (
+            <UserLoggedIn firstName={userInfos.firstName} />
           ) : (
             <UserLoggedOut />
           )}

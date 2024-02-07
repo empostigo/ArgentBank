@@ -41,7 +41,7 @@ const User = () => {
 
   return (
     <>
-      <Header firstName={userInfos.firstName} />
+      <Header />
       <main className={`${userStyle.main} ${userStyle.bgDark}`}>
         <header className={userStyle.header}>
           <h1>

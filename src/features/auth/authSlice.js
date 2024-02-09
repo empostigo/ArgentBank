@@ -27,9 +27,15 @@ export const authSlice = createSlice({
   reducers: {
     logOutUser: state => {
       localStorage.removeItem("token")
+      sessionStorage.removeItem("token")
       state.success = false
       state.token = null
       state.userAuthenticated = false
+    },
+    authenticatedUser: state => {
+      state.success = true
+      state.token = localStorage.getItem("token")
+      state.userAuthenticated = true
     }
   },
   extraReducers: builder => {
@@ -38,7 +44,7 @@ export const authSlice = createSlice({
     })
     builder.addCase(logUserThunk.fulfilled, (state, action) => {
       state.success = true
-      state.token = action.payload
+      state.token = action.payload.token
       state.userAuthenticated = true
     })
     builder.addCase(logUserThunk.rejected, (state, action) => {
@@ -50,3 +56,4 @@ export const authSlice = createSlice({
 
 export default authSlice.reducer
 export const { logOutUser } = authSlice.actions
+export const { authenticatedUser } = authSlice.actions

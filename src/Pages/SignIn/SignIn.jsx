@@ -1,5 +1,5 @@
 // React
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 // React Hook Form
 import { useForm } from "react-hook-form"
@@ -18,21 +18,26 @@ import Header from "../../components/Header/Header"
 import signInStyle from "./SignIn.module.scss"
 
 const SignIn = () => {
+  const [rememberMe, setRememberMe] = useState(false)
   const { success, token, error } = useSelector(state => state.user)
   const dispatch = useDispatch()
 
   const { register, handleSubmit } = useForm()
   const submitForm = data => {
+    setRememberMe(data.checkbox)
     dispatch(logUserThunk(data))
   }
 
   const navigate = useNavigate()
   useEffect(() => {
     if (success) {
-      localStorage.setItem("token", JSON.stringify(token.token))
+      rememberMe
+        ? localStorage.setItem("token", JSON.stringify(token))
+        : sessionStorage.setItem("token", JSON.stringify(token))
+
       navigate("/profile")
     } else error ? console.log(error) : null
-  }, [navigate, success, error, token])
+  }, [navigate, success, error, token, rememberMe])
 
   return (
     <>

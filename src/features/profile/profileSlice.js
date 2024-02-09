@@ -7,8 +7,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 const API_URL = "http://localhost:3001/api/v1"
 const USER_PROFILE = `${API_URL}/user/profile`
 
-export const userInfosThunk = createAsyncThunk("user/profile", async () => {
-  const token = JSON.parse(localStorage.getItem("token"))
+export const userInfosThunk = createAsyncThunk("user/profile", async token => {
   const attachedBearer = `Bearer ${token}`
   const response = await axios({
     method: "post",

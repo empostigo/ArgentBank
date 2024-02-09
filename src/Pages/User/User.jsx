@@ -15,6 +15,7 @@ import { useEffect, useRef } from "react"
 
 const User = () => {
   const { userInfos } = useSelector(state => state.profile)
+  const { token } = useSelector(state => state.user)
   const dispatch = useDispatch()
 
   const editButtonRef = useRef("initial")
@@ -31,12 +32,12 @@ const User = () => {
   const { register, handleSubmit } = useForm()
   const submitForm = data => {
     dispatch(userInfosUpdateThunk(data))
-    dispatch(userInfosThunk())
+    dispatch(userInfosThunk(token))
     closeEditUserInfos()
   }
 
   useEffect(() => {
-    dispatch(userInfosThunk())
+    dispatch(userInfosThunk(token))
   })
 
   return (

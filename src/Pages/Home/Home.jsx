@@ -1,4 +1,5 @@
 // assets
+import { useEffect } from "react"
 import chatIcon from "../../assets/icon-chat.png"
 import moneyIcon from "../../assets/icon-money.png"
 import securityIcon from "../../assets/icon-security.png"
@@ -8,8 +9,18 @@ import Header from "../../components/Header/Header"
 
 // Style
 import homeStyle from "./Home.module.scss"
+import { useDispatch } from "react-redux"
+import { authenticatedUser } from "../../features/auth/authSlice"
+import { userInfosThunk } from "../../features/profile/profileSlice"
 
 const Home = () => {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    if ("token" in localStorage) {
+      dispatch(authenticatedUser())
+      dispatch(userInfosThunk(JSON.parse(localStorage.getItem("token"))))
+    }
+  })
   return (
     <>
       <Header />

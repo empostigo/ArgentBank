@@ -41,7 +41,6 @@ const SignIn = () => {
 
   return (
     <>
-      <Header />
       <main className={`${signInStyle.main} ${signInStyle.bgDark}`}>
         <section className={signInStyle.content}>
           <i className={`fa fa-user-circle ${signInStyle.icon}`}></i>

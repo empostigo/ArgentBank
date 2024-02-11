@@ -42,7 +42,6 @@ const User = () => {
 
   return (
     <>
-      <Header />
       <main className={`${userStyle.main} ${userStyle.bgDark}`}>
         <header className={userStyle.header}>
           <h1>

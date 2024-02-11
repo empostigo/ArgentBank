@@ -23,7 +23,6 @@ const Home = () => {
   })
   return (
     <>
-      <Header />
       <main>
         <div className={homeStyle.hero}>
           <section className={homeStyle.heroContent}>

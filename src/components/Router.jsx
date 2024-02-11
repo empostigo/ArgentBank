@@ -9,6 +9,7 @@ import {
 } from "react-router-dom"
 
 // Components
+import Header from "./Header/Header"
 import Footer from "./Footer/Footer"
 
 // Pages
@@ -20,6 +21,7 @@ import ProtectedRoute from "./ProtectedRoute/ProtectedRoute"
 const Layout = () => {
   return (
     <>
+      <Header />
       <Outlet />
       <Footer />
     </>

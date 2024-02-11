@@ -11,6 +11,7 @@ import {
 // Components
 import Header from "./Header/Header"
 import Footer from "./Footer/Footer"
+import Error404 from "./Error404/Error404"
 
 // Pages
 import Home from "../Pages/Home/Home"
@@ -42,6 +43,7 @@ const router = createBrowserRouter(
             </ProtectedRoute>
           }
         />
+        <Route path="*" element={<Error404 />} />
       </Route>
     </>
   )

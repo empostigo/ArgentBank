@@ -1,0 +1,17 @@
+.main {
+  background-color: #f6f6f6;
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10em;
+    padding-bottom: 10em;
+  }
+
+  .text {
+    font-weight: 700;
+    font-size: 20px;
+  }
+}

@@ -1,14 +1,17 @@
-// assets
+// React
 import { useEffect } from "react"
+// Redux
+import { useDispatch } from "react-redux"
+import { authenticatedUser } from "../../features/auth/authSlice"
+import { userInfosThunk } from "../../features/profile/profileSlice"
+
+// assets
 import chatIcon from "../../assets/icon-chat.png"
 import moneyIcon from "../../assets/icon-money.png"
 import securityIcon from "../../assets/icon-security.png"
 
 // Style
 import homeStyle from "./Home.module.scss"
-import { useDispatch } from "react-redux"
-import { authenticatedUser } from "../../features/auth/authSlice"
-import { userInfosThunk } from "../../features/profile/profileSlice"
 
 const Home = () => {
   const dispatch = useDispatch()
@@ -18,6 +21,7 @@ const Home = () => {
       dispatch(userInfosThunk(JSON.parse(localStorage.getItem("token"))))
     }
   })
+
   return (
     <main>
       <div className={homeStyle.hero}>

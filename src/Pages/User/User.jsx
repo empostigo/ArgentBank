@@ -1,7 +1,9 @@
 // Redux
 import { useDispatch, useSelector } from "react-redux"
-import { userInfosThunk } from "../../features/profile/profileSlice"
-import { userInfosUpdateThunk } from "../../features/updateUserProfile/updateUserProfileSlice"
+import {
+  userInfosThunk,
+  userInfosUpdateThunk
+} from "../../features/profile/profileSlice"
 
 // React Hook Form
 import { useForm } from "react-hook-form"
@@ -29,13 +31,13 @@ const User = () => {
   const { register, handleSubmit } = useForm()
   const submitForm = data => {
     dispatch(userInfosUpdateThunk(data))
-    dispatch(userInfosThunk(token))
+    dispatch(userInfosThunk())
     closeEditUserInfos()
   }
 
   useEffect(() => {
     dispatch(userInfosThunk(token))
-  })
+  }, [dispatch, token])
 
   return (
     <main className={`${userStyle.main} ${userStyle.bgDark}`}>

@@ -18,9 +18,9 @@ const Home = () => {
   useEffect(() => {
     if ("token" in localStorage) {
       dispatch(authenticatedUser())
-      dispatch(userInfosThunk(JSON.parse(localStorage.getItem("token"))))
+      dispatch(userInfosThunk(localStorage.getItem("token")))
     }
-  })
+  }, [])
 
   return (
     <main>

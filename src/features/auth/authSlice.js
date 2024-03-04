@@ -54,6 +54,8 @@ export const authSlice = createSlice({
   }
 })
 
-export default authSlice.reducer
+export const getJWTToken = state => state.user.token
 export const { logOutUser } = authSlice.actions
 export const { authenticatedUser } = authSlice.actions
+
+export default authSlice.reducer

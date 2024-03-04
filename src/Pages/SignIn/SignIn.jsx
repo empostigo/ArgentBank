@@ -29,8 +29,8 @@ const SignIn = () => {
   useEffect(() => {
     if (success) {
       rememberMe
-        ? localStorage.setItem("token", JSON.stringify(token))
-        : sessionStorage.setItem("token", JSON.stringify(token))
+        ? localStorage.setItem("token", token)
+        : sessionStorage.setItem("token", token)
 
       navigate("/profile")
     } else error ? console.log(error) : null

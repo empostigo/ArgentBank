@@ -7,6 +7,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 const API_URL = "http://localhost:3001/api/v1"
 const USER_LOGIN = `${API_URL}/user/login`
 
+// Try a login with provided email and password
 export const logUserThunk = createAsyncThunk("user/login", async data => {
   const email = data.email
   const password = data.password
@@ -54,7 +55,9 @@ export const authSlice = createSlice({
   }
 })
 
+// Use in profileSlice to retrieve the JWT from the store
 export const getJWTToken = state => state.user.token
+
 export const { logOutUser } = authSlice.actions
 export const { authenticatedUser } = authSlice.actions
 

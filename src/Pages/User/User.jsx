@@ -30,7 +30,9 @@ const User = () => {
 
   const { register, handleSubmit } = useForm()
   const submitForm = data => {
+    // Update user infos
     dispatch(userInfosUpdateThunk(data))
+    // Refresh UI to reflect the update
     dispatch(userInfosThunk())
     closeEditUserInfos()
   }

@@ -16,11 +16,12 @@ import homeStyle from "./Home.module.scss"
 const Home = () => {
   const dispatch = useDispatch()
   useEffect(() => {
+    // Do we remember the user ?
     if ("token" in localStorage) {
       dispatch(authenticatedUser())
       dispatch(userInfosThunk(localStorage.getItem("token")))
     }
-  }, [])
+  }, [dispatch])
 
   return (
     <main>

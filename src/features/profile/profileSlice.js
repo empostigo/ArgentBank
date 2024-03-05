@@ -10,6 +10,7 @@ import { getJWTToken } from "../auth/authSlice"
 const API_URL = "http://localhost:3001/api/v1"
 const USER_PROFILE = `${API_URL}/user/profile`
 
+// Fetch user infos
 export const userInfosThunk = createAsyncThunk(
   "user/profile",
   async (_, thunkAPI) => {
@@ -27,6 +28,7 @@ export const userInfosThunk = createAsyncThunk(
   }
 )
 
+// Update user infos
 export const userInfosUpdateThunk = createAsyncThunk(
   "user/profileUpdate",
   async (data, thunkAPI) => {

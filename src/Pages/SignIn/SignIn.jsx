@@ -28,11 +28,17 @@ const SignIn = () => {
 
   const navigate = useNavigate()
   useEffect(() => {
-    // Do we remember the user ?
+    // To avoid logout when refreshing page
     if ("token" in localStorage) {
       dispatch(authenticatedUser())
       dispatch(userInfosThunk(localStorage.getItem("token")))
     }
+
+    if ("token" in sessionStorage) {
+      dispatch(authenticatedUser())
+      dispatch(userInfosThunk(sessionStorage.getItem("token")))
+    }
+
     if (success) {
       rememberMe
         ? localStorage.setItem("token", token)

@@ -1,11 +1,10 @@
 // Redux
 import { useDispatch, useSelector } from "react-redux"
-import { authenticatedUser } from "../../features/auth/authSlice"
 import {
   userInfosThunk,
   userInfosUpdateThunk
 } from "../../features/profile/profileSlice"
-
+import { authenticatedUser } from "../../features/auth/authSlice"
 // React Hook Form
 import { useForm } from "react-hook-form"
 
@@ -39,11 +38,17 @@ const User = () => {
   }
 
   useEffect(() => {
-    // Do we remember the user ?
+    // To avoid logout when refreshing page
     if ("token" in localStorage) {
       dispatch(authenticatedUser())
       dispatch(userInfosThunk(localStorage.getItem("token")))
     }
+
+    if ("token" in sessionStorage) {
+      dispatch(authenticatedUser())
+      dispatch(userInfosThunk(sessionStorage.getItem("token")))
+    }
+
     dispatch(userInfosThunk(token))
   }, [dispatch, token])
 

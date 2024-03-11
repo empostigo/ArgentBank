@@ -9,7 +9,8 @@ import { useNavigate } from "react-router-dom"
 
 // Redux
 import { useDispatch, useSelector } from "react-redux"
-import { logUserThunk } from "../../features/auth/authSlice"
+import { logUserThunk, authenticatedUser } from "../../features/auth/authSlice"
+import { userInfosThunk } from "../../features/profile/profileSlice"
 
 // Style
 import signInStyle from "./SignIn.module.scss"
@@ -27,6 +28,11 @@ const SignIn = () => {
 
   const navigate = useNavigate()
   useEffect(() => {
+    // Do we remember the user ?
+    if ("token" in localStorage) {
+      dispatch(authenticatedUser())
+      dispatch(userInfosThunk(localStorage.getItem("token")))
+    }
     if (success) {
       rememberMe
         ? localStorage.setItem("token", token)
@@ -34,7 +40,7 @@ const SignIn = () => {
 
       navigate("/profile")
     } else error ? console.log(error) : null
-  }, [navigate, success, error, token, rememberMe])
+  }, [navigate, dispatch, success, error, token, rememberMe])
 
   return (
     <main className={`${signInStyle.main} ${signInStyle.bgDark}`}>

@@ -1,5 +1,6 @@
 // Redux
 import { useDispatch, useSelector } from "react-redux"
+import { authenticatedUser } from "../../features/auth/authSlice"
 import {
   userInfosThunk,
   userInfosUpdateThunk
@@ -38,6 +39,11 @@ const User = () => {
   }
 
   useEffect(() => {
+    // Do we remember the user ?
+    if ("token" in localStorage) {
+      dispatch(authenticatedUser())
+      dispatch(userInfosThunk(localStorage.getItem("token")))
+    }
     dispatch(userInfosThunk(token))
   }, [dispatch, token])
 
